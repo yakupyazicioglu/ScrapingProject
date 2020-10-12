@@ -16,19 +16,19 @@ class AuthorSpider(scrapy.Spider):
         str1 = ''.join(str(e) for e in details)
         isbn = re.findall(
             "[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]", str(str1))
-        publishedDate = re.findall("[2][0][0-2][0-9]", str(str1))
+        publishDate = re.findall("[2][0][0-2][0-9]", str(str1))
 
         str2 = response.css('.product-description p::text').extract()
         info = ''.join(str(e) for e in str2)
 
         yield {
-            'id': str(uuid.uuid4()),
+            'bookId': str(uuid.uuid4().hex)[:16],
             'isbn': ''.join(str(e) for e in isbn),
             'title': response.css('.prodyctDetailTopTitle h1::text').extract_first().strip(),
             'authors': response.xpath('//*[@id="productpricedetails"]/div[1]/div[3]/div[1]/span[2]/a/text()').extract_first(),
             'cover': response.xpath('//*[@id="main-product-img"]/@data-src').extract_first(),
             'publisher': response.css('.publisher a::text').extract_first(),
-            'publishedDate': ''.join(str(e) for e in publishedDate),
-            'category': 'Medya',
-            'info': info,
+            'publishDate': ''.join(str(e) for e in publishDate),
+            'genres': [{"name":"Medya"},{"name":"Is Ekonomi & Hukuk"},{"name":"Egitim & Basvuru"}],
+            'summary': info,
         }
