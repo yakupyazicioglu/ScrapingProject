@@ -1,6 +1,6 @@
 import scrapy
 
-class AuthorSpider(scrapy.Spider):
+class BinKitapSpider(scrapy.Spider):
     name = 'books'
     start_urls = ['https://1000kitap.com/kitaplar?s=alfabetik&sayfa=1']
 

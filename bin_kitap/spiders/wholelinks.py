@@ -6,7 +6,7 @@ from scrapy.linkextractors import LinkExtractor
 class MySpider(CrawlSpider):
     name = 'wholeb'
     allowed_domains = ['1000kitap.com']
-    f = open('urls.json')
+    f = open('../urls.json')
     start_urls =[url.strip() for url in f.readlines()]
     f.close()
 

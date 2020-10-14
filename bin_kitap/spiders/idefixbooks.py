@@ -2,7 +2,7 @@ import scrapy
 import re
 import uuid
 
-class AuthorSpider(scrapy.Spider):
+class BookSpider(scrapy.Spider):
     name = 'idefixbooks'
     start_urls = ['https://www.idefix.com/kategori/Kitap/Egitim-Basvuru/Is-Ekonomi-Hukuk/Medya/grupno=00483?Page=%s' %
                   Page for Page in range(1, 15)]

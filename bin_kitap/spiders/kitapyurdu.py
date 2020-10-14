@@ -1,6 +1,6 @@
 import scrapy
 
-class AuthorSpider(scrapy.Spider):
+class KitapyurduSpider(scrapy.Spider):
     name = 'booksky'
     allowed_domains = ['kitapyurdu.com']
     start_urls = ['https://www.kitapyurdu.com/index.php?route=product/category&filter_category_all=true&path=1_200&filter_in_stock=1&sort=purchased_365&order=DESC&limit=100&page=1']
